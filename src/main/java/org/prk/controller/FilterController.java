@@ -25,16 +25,18 @@ public class FilterController {
 	@RequestMapping("/saveFilter")
 	@ResponseBody
 	public String welcome(SearchForm filterValue) {
-		/*SearchForm sf = new SearchForm();	*/
-		System.out.println(	filterService.getMasterTableMap().get(filterValue.getContent()));
-		System.out.println(	filterService.getMasterTableMap().get("heading"));
+		//populate your user filter object with below values
+		
 		BeanInfo beanInfo;
 		try {
 			beanInfo = Introspector.getBeanInfo(SearchForm.class);
 		
 		for (PropertyDescriptor propertyDesc : beanInfo.getPropertyDescriptors()) {
+			// filed name 
 		    String propertyName = propertyDesc.getName();
+		    //  user selected value for that filed
 		    Object value = propertyDesc.getReadMethod().invoke(filterValue);
+		    // id for that filed from db
 		    System.out.println(	filterService.getMasterTableMap().get(propertyName));
 		}
 
