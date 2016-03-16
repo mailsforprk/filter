@@ -68,7 +68,7 @@ function saveFilter()
         $.ajax({
             type: "POST",
             url: "saveFilter",
-            data: {"filterValue":datastring},
+            data:datastring,
             success: function(data) {
                  alert('Data send');
             }
